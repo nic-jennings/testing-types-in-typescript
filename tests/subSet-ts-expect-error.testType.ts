@@ -1,57 +1,5 @@
-import { ExtractKeys, SubSet } from "./SubSet";
-
-type MainObject = {
-  id: string;
-  name: string;
-  nested: {
-    id: string;
-    name: string;
-  };
-  nestedArray: MainObject["nested"][];
-};
-
-const MainObjectValue: MainObject = {
-  id: "bla",
-  name: "bla",
-  nested: {
-    id: "bla",
-    name: "bla",
-  },
-  nestedArray: [
-    {
-      id: "bla",
-      name: "bla",
-    },
-  ],
-};
-
-/**
- * Describe: ExtractKeys
- */
-let noKeys: ExtractKeys<{}, MainObject>;
-// @ts-expect-error
-noKeys = "";
-
-let MainOnlyKey: ExtractKeys<{ id: string }, MainObject>;
-// @ts-expect-no-error
-MainOnlyKey = "id";
-// @ts-expect-error
-MainOnlyKey = "name";
-
-let KeyNotInMainObject: ExtractKeys<MainObject, MainObject>;
-// @ts-expect-no-error
-KeyNotInMainObject = "id";
-// @ts-expect-error
-KeyNotInMainObject = "bla";
-
-let RequestedKeyNotInMainObject: ExtractKeys<
-  MainObject & { bla: string },
-  MainObject
->;
-// @ts-expect-no-error
-RequestedKeyNotInMainObject = "id";
-// @ts-expect-error
-RequestedKeyNotInMainObject = "bla";
+import { SubSet } from "../src/SubSet";
+import { MainObject, MainObjectValue } from "./mocks/MainObject";
 
 /**
  * Describe: SubSet

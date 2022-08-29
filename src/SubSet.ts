@@ -1,8 +1,4 @@
-/**
- * Extract the intersecting Keys from two Object.
- * Right Object is the source of truth.
- */
-export type ExtractKeys<T, Obj> = Extract<keyof T, keyof Obj>;
+import { ExtractKeys } from "./ExtractKeys";
 
 /**
  * Returns a new Type where Two Objects recursively intersect.

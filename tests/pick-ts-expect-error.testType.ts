@@ -1,12 +1,4 @@
-type MainObject = {
-  id: string;
-  name: string;
-  nested: {
-    id: string;
-    name: string;
-  };
-  nestedArray: MainObject["nested"][];
-};
+import { MainObject } from "./mocks/MainObject";
 
 let PickSelected: Pick<MainObject, "id">;
 // @ts-expect-no-error
