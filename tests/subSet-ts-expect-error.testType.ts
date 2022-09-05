@@ -21,7 +21,7 @@ let SubSetKeyOptional: SubSet<{ id?: string; name: string }, MainObject>;
 SubSetKeyOptional = { id: "bla", name: "bla" };
 // @ts-expect-no-error
 SubSetKeyOptional = { id: undefined, name: "bla" };
-// @ts-expect-error
+// @ts-expect-no-error
 SubSetKeyOptional = { name: "bla" };
 
 let SubSetMisMatchType: SubSet<{ id: number }, { id: string }>;
