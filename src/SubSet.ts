@@ -26,14 +26,10 @@ type SubSetType<
   Key extends keyof T & keyof Obj
 > = Obj[Key] extends object
   ? Obj[Key] extends Array<object>
-    ? 0 extends keyof Obj[Key]
-      ? 0 extends keyof T[Key]
-        ? SubSet<T[Key][0], Obj[Key][0]>[]
-        : never
+    ? number extends keyof Obj[Key] & keyof T[Key]
+      ? SubSet<T[Key][number], Obj[Key][number]>[]
       : never
     : SubSet<T[Key], Obj[Key]>
-  : Obj[Key] | undefined extends T[Key]
-  ? Obj[Key] | undefined
   : Obj[Key] extends T[Key]
   ? Obj[Key]
   : never;
